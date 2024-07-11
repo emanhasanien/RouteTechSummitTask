@@ -4,11 +4,15 @@ import useFetch from "./useFetch"
 
 const Home = () => {
   const {data: customers, isPending, error} = useFetch("http://localhost:8000/customers")
+  const { data: trasaction } = useFetch("http://localhost:8000/transactions/")
+  // console.log(trasaction);
+  
   return (
    <section>
      {error && <p>{error}</p>}
      {isPending && <p>Loading Customers....</p>}
-     {customers && <CustomerList customers={customers}/>}
+     {customers && trasaction ? <CustomerList customers={customers} transaction={trasaction}/> : null}
+     
    </section>
   )
 }
