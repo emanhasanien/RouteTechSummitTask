@@ -1,8 +1,17 @@
+import { BrowserRouter, Route,  Routes } from "react-router-dom"
+import Home from "./Components/Home"
+import CustomerTransactions from "./Components/CustomerTransactions"
 
 
 const App = () => {
   return (
-    <div className="text-3xl font-bold underline">App</div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ <Home/>}/>
+        <Route path="/customers/:id" element={<CustomerTransactions/>}/>
+      </Routes>
+    
+    </BrowserRouter>
   )
 }
 
