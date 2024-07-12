@@ -1,32 +1,37 @@
 import { Link } from "react-router-dom";
+import { Customer, Transactions } from "../interfaces";
 
-interface Customer {
-  id: number;
-  name: string;
-}
 
-interface Transactions{
-  customer_id: number,
-  date:string,
-  amount:number
 
-}
+
 
 interface CustomerListProps {
   customers: Customer[];
   transaction: Transactions[]
 }
 
+
+
 const CustomerList = ({ customers ,transaction }: CustomerListProps) => {
-  console.log(transaction);
-  
+
+
+
+
   return (
     <>
-      <section className="container my-20 flex flex-col justify-center items-center">
+      <section className="container mt-20 mb-10 flex flex-col justify-center items-center">
+    
         <section>
           <h1 className="text-3xl font-bold text-sky-700 "> Customer List </h1>
         </section>
 
+        <input type="text" 
+        className="border border-slate-300 p-2 w-[500px] my-6 rounded-md focus:outline-none"
+         placeholder="Search..... "
+       
+         
+         />
+       
         <section className="my-6">
           <table className="border border-collapse">
             <thead className="">
@@ -52,8 +57,8 @@ const CustomerList = ({ customers ,transaction }: CustomerListProps) => {
                   {transaction.map( (trans) => ( 
                      trans.customer_id == customer.id ?
                       <td className="border border-slate-300 p-3 flex flex-row items-center justify-between"> 
-                      <td className="text-teal-600">{trans.date}</td>
-                      <td>{trans.amount}</td>
+                      <p className="text-teal-600">{trans.date}</p>
+                      <p>{trans.amount}</p>
                      </td> : null
                   ))}
 
@@ -61,8 +66,13 @@ const CustomerList = ({ customers ,transaction }: CustomerListProps) => {
               ))}
             </tbody>
           </table>
+          {/* <Link to={'/chart'}>
+           <button>customer chart</button>
+          </Link> */}
         </section>
       </section>
+
+
     </>
   );
 };
