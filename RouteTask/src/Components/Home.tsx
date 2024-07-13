@@ -16,9 +16,11 @@ const Home = () => {
   return (
  <>
     <section>
+ 
      {error && <p>Error occuerd</p>}
      {isPending && <p className="flex justify-center items-center text-8xl mt-40 text-red-800"><i className="fa fa-spinner fa-spin"></i></p>}
      {customers && transaction ? <>
+       
        
       <CustomerList customers={customers} transaction={transaction}/>
       <Chart customers={customers}  transaction={transaction}/>
@@ -29,9 +31,6 @@ const Home = () => {
      
    </section>
 
-   {/* <section className="flex justify-center items-center">
-   {customers && transaction ? <ChartComponent customers={customers} transaction={transaction } /> : null}
-   </section> */}
 
   
  </>

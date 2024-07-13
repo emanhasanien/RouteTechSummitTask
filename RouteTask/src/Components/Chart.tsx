@@ -9,39 +9,33 @@ import { Customer, Transactions } from "../interfaces";
 
 ChartJs.register(CategoryScale, LinearScale, BarElement);
 
-interface Iprops{
-    customers: Customer[];
-    transaction: Transactions[]
+interface Iprops {
+  customers: Customer[];
+  transaction: Transactions[];
 }
 
-const Chart = ({customers, transaction}:Iprops) => {
+const Chart = ({ customers, transaction }: Iprops) => {
+  const customerNames = customers?.map((customer) => customer.name);
 
-    const customerNames = customers?.map(customer => customer.name);
+  const totalTransactions = customers?.map((customer) => {
+    let TotalCustomerTransaction = 0;
 
-    const totalTransactions = customers.map(customer =>
-     {
-        let TotalCustomerTransaction= 0
-        transaction.map(transaction =>  {
-          
-            if(transaction.customer_id == customer.id){
-              TotalCustomerTransaction=transaction.amount+ TotalCustomerTransaction
-            }
-            
-          })
-             
-                                                                                                                                                                                     
-          return TotalCustomerTransaction
-     }
-     
-    );
+    transaction?.map((transaction) => {
+      if (transaction.customer_id === customer.id) {
+        TotalCustomerTransaction =
+          transaction.amount + TotalCustomerTransaction;
+      }
+    });
 
+    return TotalCustomerTransaction;
+  });
 
   const data = {
     labels: customerNames,
     datasets: [
       {
         label: "Total Customer Transactions per day",
-        data:totalTransactions,
+        data: totalTransactions,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",

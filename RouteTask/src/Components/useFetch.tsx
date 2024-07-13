@@ -9,7 +9,7 @@ const useFetch = (url: string) : UseFetchResult => {
     const [data ,setData] = useState<any | null>(null)
     const [isPending , setIsPending]=useState(true)
     const [error, setError]= useState<any|null>(null)
-
+    
     useEffect(() => {
         setTimeout(()=>{
             fetch(url)
