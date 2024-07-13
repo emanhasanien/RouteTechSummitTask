@@ -21,7 +21,7 @@ const Chart = ({ customers, transaction }: Iprops) => {
     let TotalCustomerTransaction = 0;
 
     transaction?.map((transaction) => {
-      if (transaction.customer_id === customer.id) {
+      if (transaction.customer_id == customer.id) {
         TotalCustomerTransaction =
           transaction.amount + TotalCustomerTransaction;
       }
